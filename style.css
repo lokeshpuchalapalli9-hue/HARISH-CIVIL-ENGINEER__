@@ -1,0 +1,1036 @@
+/* =====================================================
+       BASIC RESET
+    ===================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+
+    body{
+      background:#f4f7f9;
+      color:#222;
+      overflow-x:hidden;
+    }
+
+
+    /* =====================================================
+       ANIMATED BACKGROUND
+    ===================================================== */
+
+    body::before{
+
+      content:"";
+
+      position:fixed;
+
+      inset:0;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          #d8ecff 0%,
+          transparent 40%
+        ),
+
+        radial-gradient(
+          circle at bottom right,
+          #ffe7c2 0%,
+          transparent 40%
+        );
+
+      z-index:-1;
+
+      animation:bgMove 12s ease-in-out infinite alternate;
+
+    }
+
+
+    @keyframes bgMove{
+
+      from{
+        transform:translateY(0);
+      }
+
+      to{
+        transform:translateY(-20px);
+      }
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header{
+
+      position:sticky;
+
+      top:0;
+
+      width:100%;
+
+      padding:15px 40px;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      background:rgba(255,255,255,0.90);
+
+      backdrop-filter:blur(10px);
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,0.08);
+
+      z-index:1000;
+
+      animation:fadeDown 1s ease;
+
+    }
+
+
+    @keyframes fadeDown{
+
+      from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+      }
+
+      to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CIVIL ENGINEER HARISH LOGO
+    ===================================================== */
+
+    .logo{
+
+      font-size:30px;
+
+      font-weight:bold;
+
+      color:#0b3d5c;
+
+      text-decoration:none;
+
+      cursor:pointer;
+
+      display:inline-block;
+
+      transition:0.3s;
+
+    }
+
+
+    .logo:hover{
+
+      transform:scale(1.03);
+
+      color:#0077cc;
+
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .nav{
+
+      display:flex;
+
+      gap:20px;
+
+      padding:10px 20px;
+
+      border-radius:40px;
+
+      background:#fff;
+
+      box-shadow:
+        0 4px 10px rgba(0,0,0,0.08);
+
+    }
+
+
+    .nav a{
+
+      text-decoration:none;
+
+      color:#333;
+
+      font-weight:600;
+
+      position:relative;
+
+      transition:0.3s;
+
+    }
+
+
+    .nav a::after{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;
+
+      bottom:-5px;
+
+      width:0;
+
+      height:2px;
+
+      background:#0077cc;
+
+      transition:0.3s;
+
+    }
+
+
+    .nav a:hover{
+
+      color:#0077cc;
+
+    }
+
+
+    .nav a:hover::after{
+
+      width:100%;
+
+    }
+
+
+    /* =====================================================
+       HERO SLIDER
+    ===================================================== */
+
+    .slider{
+
+      width:100%;
+
+      height:70vh;
+
+      min-height:550px;
+
+      overflow:hidden;
+
+      position:relative;
+
+      margin-top:8px;
+
+    }
+
+
+    /* ONLY THIS PART SLIDES */
+
+    .slides{
+
+      display:flex;
+
+      width:300%;
+
+      height:100%;
+
+      animation:slide 15s infinite;
+
+    }
+
+
+    .slide{
+
+      width:100vw;
+
+      height:100%;
+
+      position:relative;
+
+      flex-shrink:0;
+
+      overflow:hidden;
+
+    }
+
+
+    /* =====================================================
+       BACKGROUND SLIDE IMAGE
+    ===================================================== */
+
+    .background-image{
+
+      position:absolute;
+
+      inset:0;
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      filter:brightness(0.65);
+
+    }
+
+
+    /* =====================================================
+       ONE FIXED ROUND IMAGE
+       
+       IMPORTANT:
+       This is OUTSIDE .slides.
+       Therefore it WILL NOT SLIDE.
+    ===================================================== */
+
+    .fixed-round-image{
+
+      position:absolute;
+
+      left:60px;
+
+      top:50%;
+
+      transform:translateY(-50%);
+
+      width:320px;
+
+      height:320px;
+
+      border-radius:50%;
+
+      overflow:hidden;
+
+      z-index:20;
+
+      background:#fff;
+
+      border:8px solid #fff;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,0.40);
+
+    }
+
+
+    .fixed-round-image img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      border-radius:50%;
+
+      display:block;
+
+    }
+
+
+    /* =====================================================
+       SLIDE TEXT
+    ===================================================== */
+
+    .slide-text{
+
+      position:absolute;
+
+      left:45%;
+
+      top:50%;
+
+      transform:translateY(-50%);
+
+      width:50%;
+
+      color:#fff;
+
+      z-index:10;
+
+      text-align:left;
+
+    }
+
+
+    .slide-text h1{
+
+      font-size:52px;
+
+      line-height:1.15;
+
+      margin-bottom:18px;
+
+      text-shadow:
+        0 3px 10px rgba(0,0,0,0.6);
+
+    }
+
+
+    .slide-text p{
+
+      font-size:20px;
+
+      line-height:1.6;
+
+      text-shadow:
+        0 2px 8px rgba(0,0,0,0.6);
+
+    }
+
+
+    .slide-text h1::after{
+
+      content:"";
+
+      display:block;
+
+      width:80px;
+
+      height:4px;
+
+      background:#f4a300;
+
+      margin-top:18px;
+
+      border-radius:5px;
+
+    }
+
+
+    /* =====================================================
+       SLIDER ANIMATION
+    ===================================================== */
+
+    @keyframes slide{
+
+      0%,30%{
+
+        transform:translateX(0);
+
+      }
+
+      35%,65%{
+
+        transform:translateX(-100vw);
+
+      }
+
+      70%,100%{
+
+        transform:translateX(-200vw);
+
+      }
+
+    }
+
+
+    /* =====================================================
+       GENERAL SECTIONS
+    ===================================================== */
+
+    .section{
+
+      max-width:1200px;
+
+      margin:60px auto;
+
+      padding:60px 30px;
+
+      background:#fff;
+
+      border-radius:20px;
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.08);
+
+      animation:fadeUp 1s ease;
+
+    }
+
+
+    @keyframes fadeUp{
+
+      from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+      }
+
+      to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+      }
+
+    }
+
+
+    .section h2{
+
+      font-size:36px;
+
+      margin-bottom:25px;
+
+      color:#0b3d5c;
+
+      position:relative;
+
+    }
+
+
+    .section h2::after{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;
+
+      bottom:-8px;
+
+      width:70px;
+
+      height:4px;
+
+      background:#f4a300;
+
+      border-radius:2px;
+
+    }
+
+
+    /* =====================================================
+       ABOUT SECTION
+    ===================================================== */
+
+    .about-content{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:40px;
+
+      flex-wrap:wrap;
+
+    }
+
+
+    .about-text{
+
+      flex:1 1 500px;
+
+    }
+
+
+    .about-text p{
+
+      font-size:17px;
+
+      line-height:1.8;
+
+      color:#555;
+
+      margin-bottom:15px;
+
+    }
+
+
+    .about-image{
+
+      flex:1 1 400px;
+
+      text-align:center;
+
+    }
+
+
+    .about-image img{
+
+      width:100%;
+
+      max-width:500px;
+
+      border-radius:20px;
+
+      box-shadow:
+        0 12px 25px rgba(0,0,0,0.15);
+
+      animation:float 4s ease-in-out infinite;
+
+    }
+
+
+    @keyframes float{
+
+      0%,100%{
+
+        transform:translateY(0);
+
+      }
+
+      50%{
+
+        transform:translateY(-12px);
+
+      }
+
+    }
+
+
+    /* =====================================================
+       PROJECTS
+    ===================================================== */
+
+    .project-grid{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+      gap:25px;
+
+      margin-top:20px;
+
+    }
+
+
+    .project-card{
+
+      background:#f8fbfd;
+
+      border-radius:16px;
+
+      overflow:hidden;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,0.08);
+
+      transition:0.4s;
+
+    }
+
+
+    .project-card:hover{
+
+      transform:
+        translateY(-10px)
+        scale(1.02);
+
+      box-shadow:
+        0 12px 25px rgba(0,0,0,0.15);
+
+    }
+
+
+    .project-card img{
+
+      width:100%;
+
+      height:180px;
+
+      object-fit:cover;
+
+    }
+
+
+    .project-card h3{
+
+      padding:15px 15px 5px;
+
+      color:#0b3d5c;
+
+    }
+
+
+    .project-card p{
+
+      padding:0 15px 20px;
+
+      color:#555;
+
+      font-size:15px;
+
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    #contact h2{
+
+      text-align:center;
+
+    }
+
+
+    #contact h2::after{
+
+      left:50%;
+
+      transform:translateX(-50%);
+
+    }
+
+
+    .contact-text{
+
+      text-align:center;
+
+      margin-bottom:25px;
+
+      color:#555;
+
+    }
+
+
+    .contact-icons{
+
+      display:flex;
+
+      justify-content:center;
+
+      align-items:center;
+
+      gap:30px;
+
+      flex-wrap:wrap;
+
+    }
+
+
+    .contact-icons a{
+
+      width:90px;
+
+      height:90px;
+
+      border-radius:50%;
+
+      background:#fff;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      box-shadow:
+        0 6px 18px rgba(0,0,0,0.12);
+
+      transition:0.4s;
+
+      animation:pulse 3s infinite;
+
+    }
+
+
+    .contact-icons a:hover{
+
+      transform:
+        translateY(-10px)
+        rotate(5deg);
+
+      box-shadow:
+        0 12px 25px rgba(0,0,0,0.18);
+
+    }
+
+
+    .contact-icons img{
+
+      width:48px;
+
+      height:48px;
+
+    }
+
+
+    @keyframes pulse{
+
+      0%,100%{
+
+        transform:scale(1);
+
+      }
+
+      50%{
+
+        transform:scale(1.08);
+
+      }
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer{
+
+      text-align:center;
+
+      padding:25px;
+
+      color:#555;
+
+      font-size:14px;
+
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media(max-width:1000px){
+
+      .fixed-round-image{
+
+        left:35px;
+
+        width:260px;
+
+        height:260px;
+
+      }
+
+
+      .slide-text{
+
+        left:40%;
+
+        width:55%;
+
+      }
+
+
+      .slide-text h1{
+
+        font-size:40px;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:768px){
+
+      .header{
+
+        flex-direction:column;
+
+        gap:12px;
+
+        padding:15px;
+
+      }
+
+
+      .logo{
+
+        font-size:24px;
+
+      }
+
+
+      .nav{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+      }
+
+
+      .slider{
+
+        height:650px;
+
+        min-height:650px;
+
+      }
+
+
+      .fixed-round-image{
+
+        left:50%;
+
+        top:28%;
+
+        transform:
+          translate(-50%,-50%);
+
+        width:230px;
+
+        height:230px;
+
+      }
+
+
+      .slide-text{
+
+        left:50%;
+
+        top:68%;
+
+        transform:
+          translate(-50%,-50%);
+
+        width:90%;
+
+        text-align:center;
+
+      }
+
+
+      .slide-text h1{
+
+        font-size:32px;
+
+      }
+
+
+      .slide-text p{
+
+        font-size:16px;
+
+      }
+
+
+      .slide-text h1::after{
+
+        margin:18px auto 0;
+
+      }
+
+
+      .section{
+
+        margin:30px 15px;
+
+        padding:40px 20px;
+
+      }
+
+
+      .about-content{
+
+        flex-direction:column;
+
+        text-align:center;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
+    @media(max-width:500px){
+
+      .logo{
+
+        font-size:21px;
+
+      }
+
+
+      .nav{
+
+        gap:12px;
+
+        padding:8px 12px;
+
+      }
+
+
+      .nav a{
+
+        font-size:14px;
+
+      }
+
+
+      .slider{
+
+        height:600px;
+
+        min-height:600px;
+
+      }
+
+
+      .fixed-round-image{
+
+        width:190px;
+
+        height:190px;
+
+        top:28%;
+
+      }
+
+
+      .slide-text{
+
+        top:69%;
+
+        width:92%;
+
+      }
+
+
+      .slide-text h1{
+
+        font-size:27px;
+
+      }
+
+
+      .slide-text p{
+
+        font-size:15px;
+
+      }
+
+    }
